@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.api.parkingcontrol.models.ParkingSpotModel;
@@ -13,7 +14,7 @@ import com.api.parkingcontrol.repositories.ParkingSpotRepository;
 
 @Service
 public class ParkingSpotService {
-	
+
 	final ParkingSpotRepository parkingSpotRepository;
 
 	public ParkingSpotService(ParkingSpotRepository parkingSpotRepository) {
@@ -42,14 +43,12 @@ public class ParkingSpotService {
 	}
 
 	public Optional<ParkingSpotModel> findById(UUID id) {
-		return parkingSpotRepository.findById(id);
+        return parkingSpotRepository.findById(id);
 	}
 
 	@Transactional
 	public void delete(ParkingSpotModel parkingSpotModel) {
 		parkingSpotRepository.delete(parkingSpotModel);
 	}
-
-	 
 
 }
